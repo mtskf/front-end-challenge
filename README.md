@@ -1,69 +1,21 @@
-# WP Nuxt Starter
-
-Blog starter template with WP Rest-API and Nuxt.js
-
-## Features
-- SEO Friendly - OGP & Twitter Cards meta tags are rendered on server-side
-- Auto retry and cache API Requests on the both server & client side
-- API requests and routing error handling
-- Transpiling SCSS & Pug
-- Asyncronous loading components with Webpack code splitting
-
-### Example: async component loading
-```
-export default {
-  components: {
-    MyComponent: _ => import('@/components/mycomponent')
-  }
-}
-```
+# Front-End Challenge
+Challenge Detail: https://public.3.basecamp.com/p/UGtVqUhwNxcvR47f3dtHZPmf
+Demo site: 
 
 ## Dependencies
-
-#### Yarn
-https://yarnpkg.com/en/
-```
-$ brew install yarn
-```
-
-#### Gulp - only for icon font generation
-https://gulpjs.com/
-```
-$ yarn global add gulp
-```
-
-#### Now - Deployment
-https://zeit.co/now
-```
-$ yarn global add now
-```
-
-#### Dependencies Docs
-- [Nuxt.js docs](https://nuxtjs.org/guide)
-- [Nuxt Axios Module](https://axios.nuxtjs.org/)
+- [Nuxt.js](https://nuxtjs.org/guide)
 - [Vue Analytics](https://matteogabriele.gitbooks.io/vue-analytics/)
 - [Now - Realtime Global Deployments](https://zeit.co/now)
 
 
 ## Startup guide
 
-#### Installation & start dev
+#### Local Development
 ```
-$ git clone git@github.com:HNBCreative/acd.git && cd acd && yarn && yarn dev
-```
-
-#### Set git remote
-```
-$ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
-```
-
-#### Generate Iconfont
-Edit Sketch file: @/assets/fonts/hcicons/hcicons.sketch
-```
-$ gulp iconfont
+$ yarn dev
 ```
 
 #### Build and Deployment
 ```
-$ yarn build && now
+$ yarn build
 ```
