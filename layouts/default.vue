@@ -22,7 +22,7 @@
     line-height: 1.5;
   }
   main {
-    max-width: 650px;
+    max-width: 960px;
     margin: 32px auto;
     padding: 0 24px;
   }

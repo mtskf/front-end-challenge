@@ -1,8 +1,8 @@
 <template lang="pug">
   header
-    h1 WP-Nuxt Starter blog
-    nav
-      nuxt-link.link(exact='', to='/') Home
+    h1 Front-end Challenge
+    a(href="https://public.3.basecamp.com/p/UGtVqUhwNxcvR47f3dtHZPmf") Challenge Detail
+    p Mitsuki Fukunaga
 </template>
 
 <script>

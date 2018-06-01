@@ -1,33 +1,27 @@
 <template lang="pug">
-  no-ssr
-    section(v-if='posts')
-      nuxt-link.post-link(
-        v-for="(post, key) in posts",
-        :key="key",
-        :to="`/post/${post.slug}`")
-        h1 {{ post.title.rendered }}
-    h2(v-else) Loading...
-</template>
+  .row
+    .col
+      h2 Input string
+      input(type="text", v-model="inputString", @blur="setData(inputString)")
+      file-upload(@setData="setData")
+    .col
+      dijkstra(:inputString="data")
+  </template>
 
 <script>
-  const API_URI = 'https://tip.handbuiltclients.com/wp-json/wp/v2/posts'
+  import FileUpload from '@/components/FileUpload'
+  import Dijkstra from '@/components/Dijkstra'
 
   export default {
     name: 'HomePage',
-    data: () => ({
-      title: `Home - ${process.env.title}`,
-      description: 'Blog starter template with WP Rest-API and Nuxt.js'
-    }),
-    async asyncData ({ $axios, params, error }) {
-      const res = await $axios.$get(API_URI)
-        .catch(e => error({ statusCode: 500, message: 'Internal Server Error' }))
-
-      if (!res) {
-        // if response is empty, show error page
-        error({ statusCode: 500, message: 'Internal Server Error' })
+    components: { FileUpload, Dijkstra },
+    data () {
+      return {
+        title: `Home - ${process.env.title}`,
+        description: 'Blog starter template with WP Rest-API and Nuxt.js',
+        inputString: 'Graph: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7',
+        data: 'Graph: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7'
       }
-
-      return { posts: res }
     },
     head () {
       return {
@@ -50,13 +44,41 @@
         ]
       }
     },
+    watch: {
+      inputString (val) {
+        setTimeout(() => {
+          this.setData(this.inputString)
+        }, 2000)
+      }
+    },
+    methods: {
+      setData (data) {
+        this.inputString = data.trim()
+        this.data = data.trim()
+      }
+    },
     scrollToTop: true
   }
 </script>
 
 
 <style scoped lang="scss">
-a.post-link {
-
-}
+  .row {
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    margin: 0 -16px;
+  }
+  .col {
+    position: relative;
+    width: 50%;
+    margin: 0 16px;
+  }
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 4px;
+  }
 </style>
